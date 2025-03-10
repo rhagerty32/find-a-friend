@@ -5,6 +5,7 @@ export const people = [
         description: 'Friendly and outgoing.',
         churchCalling: 'Primary Teacher',
         availability: 'Weekends',
+        imageSrc: 'images/1.jpeg',
         age: 30
     },
     {
@@ -13,6 +14,7 @@ export const people = [
         description: 'Loves to help others.',
         churchCalling: 'Youth Leader',
         availability: 'Weeknights',
+        imageSrc: 'images/8.jpeg',
         age: 35
     },
     {
@@ -21,6 +23,7 @@ export const people = [
         description: 'Enjoys outdoor activities.',
         churchCalling: 'Scout Master',
         availability: 'Weekends',
+        imageSrc: 'images/3.jpeg',
         age: 40
     },
     {
@@ -29,6 +32,7 @@ export const people = [
         description: 'Tech enthusiast.',
         churchCalling: 'Ward Clerk',
         availability: 'Weekdays',
+        imageSrc: 'images/4.jpeg',
         age: 28
     },
     {
@@ -37,6 +41,7 @@ export const people = [
         description: 'Great with kids.',
         churchCalling: 'Nursery Leader',
         availability: 'Weekends',
+        imageSrc: 'images/5.jpeg',
         age: 32
     },
     {
@@ -45,6 +50,7 @@ export const people = [
         description: 'Musically talented.',
         churchCalling: 'Choir Director',
         availability: 'Weekends',
+        imageSrc: 'images/6.jpeg',
         age: 29
     },
     {
@@ -53,6 +59,7 @@ export const people = [
         description: 'Sports fan.',
         churchCalling: 'Activities Coordinator',
         availability: 'Weekdays',
+        imageSrc: 'images/7.jpeg',
         age: 33
     },
     {
@@ -61,6 +68,7 @@ export const people = [
         description: 'Loves to cook.',
         churchCalling: 'Relief Society President',
         availability: 'Weeknights',
+        imageSrc: 'images/2.jpeg',
         age: 37
     },
     {
@@ -69,6 +77,7 @@ export const people = [
         description: 'Enjoys volunteering.',
         churchCalling: 'Elder\'s Quorum President',
         availability: 'Weekends',
+        imageSrc: 'images/9.jpeg',
         age: 42
     },
     {
@@ -77,6 +86,7 @@ export const people = [
         description: 'Creative and artistic.',
         churchCalling: 'Young Women\'s President',
         availability: 'Weekdays',
+        imageSrc: 'images/10.jpeg',
         age: 31
     }
 ]
