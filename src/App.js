@@ -8,7 +8,7 @@ import { UserTemplate } from './pages/UserTemplate';
 
 function App() {
     return (
-        <Router>
+        <Router basename="/find-a-friend">
             <NavBar />
             <Routes>
                 <Route path="/" element={<Feed />} />
