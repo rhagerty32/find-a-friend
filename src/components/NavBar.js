@@ -14,8 +14,6 @@ const NavBar = () => {
     const Button = ({ route, title, icons }) => {
         const isActive = currentPath === route || (route !== "/" && currentPath.includes(route));
 
-        console.log(route, isActive)
-
         return (
             <Link
                 className='flex flex-col items-center justify-center'
