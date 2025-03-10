@@ -10,7 +10,7 @@ function App() {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Feed />} />
-                <Route path="/about" element={<Profile />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </Router>
     );
