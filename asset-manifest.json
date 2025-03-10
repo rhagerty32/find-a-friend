@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/find-a-friend/static/css/main.452d6e75.css",
+    "main.js": "/find-a-friend/static/js/main.ac8edf7e.js",
+    "static/js/453.1cf4eddc.chunk.js": "/find-a-friend/static/js/453.1cf4eddc.chunk.js",
+    "index.html": "/find-a-friend/index.html",
+    "main.452d6e75.css.map": "/find-a-friend/static/css/main.452d6e75.css.map",
+    "main.ac8edf7e.js.map": "/find-a-friend/static/js/main.ac8edf7e.js.map",
+    "453.1cf4eddc.chunk.js.map": "/find-a-friend/static/js/453.1cf4eddc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.452d6e75.css",
+    "static/js/main.ac8edf7e.js"
+  ]
+}
