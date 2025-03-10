@@ -1,21 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const Feed = () => {
-    const dummyData = [
-        { name: 'Alice', age: 25, bio: 'Loves hiking and outdoor adventures.' },
-        { name: 'Bob', age: 30, bio: 'Enjoys cooking and trying new recipes.' },
-        { name: 'Charlie', age: 28, bio: 'Avid reader and coffee enthusiast.' },
-    ];
-    const [currentIndex, setCurrentIndex] = useState(dummyData.length - 1);
-
-    const swiped = (direction, nameToDelete) => {
-        console.log('removing: ' + nameToDelete);
-        setCurrentIndex(currentIndex - 1);
-    };
-
-    const outOfFrame = (name) => {
-        console.log(name + ' left the screen!');
-    };
 
     return (
         <div className="h-screen mb-20 flex flex-col items-center justify-center font-bold font-['Averia_Serif_Libre'] gap-10">
