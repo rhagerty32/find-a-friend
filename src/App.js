@@ -3,6 +3,7 @@ import './App.css';
 import { Feed } from './pages/Feed';
 import { Profile } from './pages/Profile';
 import NavBar from './components/NavBar';
+import { FriendRequests } from './pages/FriendRequests';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Feed />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/friendRequests" element={<FriendRequests />} />
             </Routes>
         </Router>
     );

@@ -4,6 +4,8 @@ import { HiMiniUserGroup } from "react-icons/hi2";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import { GoPerson } from "react-icons/go";
 import { GoPersonFill } from "react-icons/go";
+import { FaRegBell } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 
 const NavBar = () => {
     const location = useLocation();
@@ -21,7 +23,7 @@ const NavBar = () => {
                 to={route}
             >
                 {isActive ? icons.iconSelected : icons.iconUnselected}
-                {title}
+                <p className='text-nowrap'>{title}</p>
             </Link>
         )
     }
@@ -33,6 +35,12 @@ const NavBar = () => {
             iconSelected: <HiMiniUserGroup size={30} />,
             iconUnselected: <HiOutlineUserGroup size={30} />
         },
+        friendRequests: {
+            route: '/friendRequests',
+            title: 'Requests',
+            iconSelected: <FaBell size={30} />,
+            iconUnselected: <FaRegBell size={30} />
+        },
         profile: {
             route: '/profile',
             title: 'Profile',
@@ -42,7 +50,7 @@ const NavBar = () => {
     };
 
     return (
-        <div className='absolute bottom-0 h-20 w-screen bg-white border-t flex flex-row justify-center px-10 gap-20'>
+        <div className='fixed z-50 bottom-0 h-20 w-screen bg-white border-t flex flex-row justify-center px-10 gap-20'>
             {Object.keys(routes).map((route, index) => (
                 <Button
                     route={routes[route].route}
