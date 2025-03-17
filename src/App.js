@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import { FriendRequests } from './pages/FriendRequests';
 import { UserTemplate } from './pages/UserTemplate';
 import Login from './pages/Login';
+import OnboardingConvert from './pages/OnboardingConvert';
 
 function App() {
     return (
@@ -17,13 +18,14 @@ function App() {
 
 const MainContent = () => {
     const location = useLocation();
-    const showNavBar = location.pathname !== "/login"; // Hide NavBar on Login page
+    const showNavBar = location.pathname !== "/login" && location.pathname !== "/onboarding"; // Hide NavBar on Login and Onboarding pages
 
     return (
         <>
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/onboarding" element={<OnboardingConvert />} />
                 <Route path="/feed" element={<WithNavBar><Feed /></WithNavBar>} />
                 <Route path="/profile" element={<WithNavBar><Profile /></WithNavBar>} />
                 <Route path="/friendRequests" element={<WithNavBar><FriendRequests /></WithNavBar>} />
@@ -33,7 +35,7 @@ const MainContent = () => {
     );
 };
 
-// This wrapper ensures NavBar only appears on pages other than login
+// This wrapper ensures NavBar only appears on pages other than login and onboarding
 const WithNavBar = ({ children }) => (
     <>
         <NavBar />
