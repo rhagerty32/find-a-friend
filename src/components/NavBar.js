@@ -28,7 +28,7 @@ const NavBar = () => {
 
     const routes = {
         feed: {
-            route: '/',
+            route: '/feed',
             title: 'Feed',
             iconSelected: <HiMiniUserGroup size={30} />,
             iconUnselected: <HiOutlineUserGroup size={30} />
