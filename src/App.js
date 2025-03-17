@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
-import { Feed } from './pages/Feed';
+import Feed from './pages/Feed';
 import { Profile } from './pages/Profile';
 import NavBar from './components/NavBar';
 import { FriendRequests } from './pages/FriendRequests';
