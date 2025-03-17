@@ -7,6 +7,7 @@ import { FriendRequests } from './pages/FriendRequests';
 import { UserTemplate } from './pages/UserTemplate';
 import Login from './pages/Login';
 import OnboardingConvert from './pages/OnboardingConvert';
+import OnboardingBirthday from './pages/OnboardingBirthday'; // ✅ Import new page
 
 function App() {
     return (
@@ -18,7 +19,7 @@ function App() {
 
 const MainContent = () => {
     const location = useLocation();
-    const showNavBar = location.pathname !== "/login" && location.pathname !== "/onboarding"; // Hide NavBar on Login and Onboarding pages
+    const showNavBar = location.pathname !== "/login" && location.pathname !== "/onboarding" && location.pathname !== "/onboarding-birthday"; // ✅ Hide NavBar on onboarding pages
 
     return (
         <>
@@ -26,6 +27,7 @@ const MainContent = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/onboarding" element={<OnboardingConvert />} />
+                <Route path="/onboarding-birthday" element={<OnboardingBirthday />} /> {/* ✅ Added new route */}
                 <Route path="/feed" element={<WithNavBar><Feed /></WithNavBar>} />
                 <Route path="/profile" element={<WithNavBar><Profile /></WithNavBar>} />
                 <Route path="/friendRequests" element={<WithNavBar><FriendRequests /></WithNavBar>} />
