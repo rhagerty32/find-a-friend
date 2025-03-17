@@ -7,7 +7,7 @@ const Login = () => {
 
     const handleLogin = () => {
         // Simulate login (You can add authentication logic later)
-        navigate('/onboarding');  // Redirect to Onboarding Page after login
+        navigate('/onboarding-birthday');  // Redirect to Onboarding Page after login
     };
 
     return (
