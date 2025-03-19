@@ -8,6 +8,7 @@ import { UserTemplate } from './pages/UserTemplate';
 import Login from './pages/Login';
 import OnboardingConvert from './pages/OnboardingConvert';
 import OnboardingBirthday from './pages/OnboardingBirthday'; // ✅ Import new page
+import ChurchCallingSelection from './pages/OnboardingCallings';
 
 function App() {
     return (
@@ -28,6 +29,7 @@ const MainContent = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/onboarding" element={<OnboardingConvert />} />
                 <Route path="/onboarding-birthday" element={<OnboardingBirthday />} /> {/* ✅ Added new route */}
+                <Route path="/onboarding-calling" element={<ChurchCallingSelection />} />
                 <Route path="/feed" element={<WithNavBar><Feed /></WithNavBar>} />
                 <Route path="/profile" element={<WithNavBar><Profile /></WithNavBar>} />
                 <Route path="/friendRequests" element={<WithNavBar><FriendRequests /></WithNavBar>} />
