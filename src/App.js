@@ -6,6 +6,8 @@ import NavBar from './components/NavBar';
 import { FriendRequests } from './pages/FriendRequests';
 import { UserTemplate } from './pages/UserTemplate';
 import Login from './pages/Login';
+import Messages from './pages/Messages';
+import ChatDetail from './pages/ChatDetail';
 
 function App() {
     return (
@@ -17,8 +19,8 @@ function App() {
 
 const MainContent = () => {
     const location = useLocation();
-    const showNavBar = location.pathname !== "/login"; // Hide NavBar on Login page
-
+    console.log("Current path:", location.pathname); // For debugging
+    
     return (
         <>
             <Routes>
@@ -28,16 +30,18 @@ const MainContent = () => {
                 <Route path="/profile" element={<WithNavBar><Profile /></WithNavBar>} />
                 <Route path="/friendRequests" element={<WithNavBar><FriendRequests /></WithNavBar>} />
                 <Route path="/user/:user" element={<WithNavBar><UserTemplate /></WithNavBar>} />
+                <Route path="/messages" element={<WithNavBar><Messages /></WithNavBar>} />
+                <Route path="/chat/:id" element={<WithNavBar><ChatDetail /></WithNavBar>} />
             </Routes>
         </>
     );
 };
 
-// This wrapper ensures NavBar only appears on pages other than login
+// This wrapper ensures NavBar only appears on pages other than login and onboarding
 const WithNavBar = ({ children }) => (
     <>
-        <NavBar />
         {children}
+        <NavBar />
     </>
 );
 

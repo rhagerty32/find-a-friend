@@ -6,6 +6,7 @@ import { GoPerson } from "react-icons/go";
 import { GoPersonFill } from "react-icons/go";
 import { FaRegBell } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
+import { IoChatbubbleOutline, IoChatbubble } from "react-icons/io5";
 
 const NavBar = () => {
     const location = useLocation();
@@ -33,11 +34,17 @@ const NavBar = () => {
             iconSelected: <HiMiniUserGroup size={30} />,
             iconUnselected: <HiOutlineUserGroup size={30} />
         },
-        friendRequests: {
+        requests: {
             route: '/friendRequests',
             title: 'Requests',
             iconSelected: <FaBell size={30} />,
             iconUnselected: <FaRegBell size={30} />
+        },
+        messages: {
+            route: '/messages',
+            title: 'Messages',
+            iconSelected: <IoChatbubble size={30} />,
+            iconUnselected: <IoChatbubbleOutline size={30} />
         },
         profile: {
             route: '/profile',
