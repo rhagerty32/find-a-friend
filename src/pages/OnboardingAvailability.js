@@ -15,7 +15,7 @@ const OnboardingAvailability = () => {
 
     const handleContinue = () => {
         if (selectedDays.length > 0) {
-            navigate("/feed"); // Update with actual next step route
+            navigate("/onboarding-profilePicture"); // Update with actual next step route
         }
     };
 
