@@ -11,7 +11,7 @@ const OnboardingConvert = () => {
 
   const handleContinue = () => {
     if (selection) {
-      navigate("/feed"); // Navigate to Feed page only if a choice is made
+      navigate("/onboarding-calling"); // Navigate to Feed page only if a choice is made
     }
   };
 

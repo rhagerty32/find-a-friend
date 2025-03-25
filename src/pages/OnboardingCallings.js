@@ -86,7 +86,7 @@ const ChurchCallingSelection = () => {
 
   const handleContinue = () => {
     if (selection) {
-      navigate("/feed");
+      navigate("/onboarding-availability");
     }
   };
 
