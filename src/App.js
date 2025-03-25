@@ -11,6 +11,7 @@ import ChatDetail from './pages/ChatDetail';
 import OnboardingConvert from './pages/OnboardingConvert';
 import OnboardingBirthday from './pages/OnboardingBirthday';
 import ChurchCallingSelection from './pages/OnboardingCallings';
+import ProfilePictureSelection from './pages/OnboardingProfilePicture';
 import OnboardingAvailability from './pages/OnboardingAvailability';
 
 function App() {
@@ -34,6 +35,7 @@ const MainContent = () => {
                 <Route path="/onboarding" element={<OnboardingConvert />} />
                 <Route path="/onboarding-birthday" element={<OnboardingBirthday />} />
                 <Route path="/onboarding-calling" element={<ChurchCallingSelection />} />
+                <Route path="/onboarding-profilePicture" element={<ProfilePictureSelection />} />
                 <Route path="/onboarding-availability" element={<OnboardingAvailability />} />
                 <Route path="/feed" element={<WithNavBar><Feed /></WithNavBar>} />
                 <Route path="/profile" element={<WithNavBar><Profile /></WithNavBar>} />
