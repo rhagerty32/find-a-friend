@@ -11,7 +11,7 @@ const OnboardingConvert = () => {
 
   const handleContinue = () => {
     if (selection) {
-      navigate("/onboarding-calling-avail");
+      navigate("/onboarding-interests");
     }
   };
 
@@ -36,7 +36,7 @@ const OnboardingConvert = () => {
           <button
             onClick={() => handleSelection("Yes")}
             className={`w-full border border-gray-300 rounded-[16px] py-4 text-lg ${
-              selection === "Yes" ? "bg-gray-200" : "bg-white"
+              selection === "Yes" ? "bg-orange-400 text-white border-orange-400" : "bg-white"
             }`}
           >
             Yes
@@ -44,7 +44,7 @@ const OnboardingConvert = () => {
           <button
             onClick={() => handleSelection("No")}
             className={`w-full border border-gray-300 rounded-[16px] py-4 text-lg ${
-              selection === "No" ? "bg-gray-200" : "bg-white"
+              selection === "No" ? "bg-orange-400 text-white border-orange-400" : "bg-white"
             }`}
           >
             No

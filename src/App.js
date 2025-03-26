@@ -12,6 +12,7 @@ import OnboardingConvert from './pages/OnboardingConvert';
 import OnboardingBirthday from './pages/OnboardingBirthday';
 import ChurchCallingSelection from './pages/OnboardingCallings';
 import ProfilePictureSelection from './pages/OnboardingProfilePicture';
+import OnboardingInterests from './pages/OnboardingInterests';
 
 function App() {
     return (
@@ -32,6 +33,7 @@ const MainContent = () => {
                 <Route path="/onboarding-birthday" element={<OnboardingBirthday />} />
                 <Route path="/onboarding-convert" element={<OnboardingConvert />} />
                 <Route path="/onboarding-calling-avail" element={<ChurchCallingSelection />} />
+                <Route path="/onboarding-interests" element={< OnboardingInterests />} />
                 <Route path="/onboarding-profilePicture" element={<ProfilePictureSelection />} />
                 <Route path="/feed" element={<WithNavBar><Feed /></WithNavBar>} />
                 <Route path="/profile" element={<WithNavBar><Profile /></WithNavBar>} />
