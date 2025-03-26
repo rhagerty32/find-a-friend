@@ -2,8 +2,9 @@
     "name": "Find a Friend",
     "short_name": "Find a Friend",
     "description": "Find a Friend",
-    "start_url": "/",
+    "start_url": "/find-a-friend/",
     "display": "standalone",
+    "scope": "/find-a-friend/",
     "background_color": "#ffffff",
     "theme_color": "#000000",
     "icons": [
