@@ -1,52 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../logo.svg'; // Ensure the logo path is correct
+import logo from '../logo.svg'; // High-five logo
 
 const Login = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleLogin = () => {
-        // Simulate login (You can add authentication logic later)
-        navigate('/onboarding-birthday');  // Redirect to Onboarding Page after login
-    };
+  const handleLogin = () => {
+    navigate('/onboarding-birthday');
+  };
 
-    return (
-        <div className="h-screen flex flex-col items-center justify-center text-center px-6">
-            {/* Logo */}
-            <img src={logo} alt="Find a Friend Logo" className="w-70 h-70 mb-3" />
-
-            {/* Title */}
-            <h1 className="text-5xl font-bold text-black mb-16">find a friend</h1>
-
-            {/* Description */}
-            <div className="mx-20">
-                <p className="font-light font-['Averia_Serif_Libre'] text-black text-2xl leading-tight mb-16">
-                    Connect with fellow LDS members and build meaningful friendships.
-                    <br></br>Your next adventure starts here!
-                </p>
-            </div>
-
-            {/* Login Button */}
-            <button 
-                className="relative w-[80%] max-w-sm bg-white border-2 border-[#D9D9D9] rounded-[16px] px-0 py-4 hover:shadow-md transition mb-16 flex items-center overflow-hidden"
-                onClick={handleLogin} // Redirect to onboarding
-            >
-                <img 
-                    src={`${process.env.PUBLIC_URL}/church.png`} 
-                    alt="Church Account Logo"
-                    className="h-full w-auto absolute left-0 top-0 rounded-l-lg object-cover"
-                />
-                <span className="relative w-full text-center px-6 pl-20">
-                    Continue with Church Account
-                </span>
-            </button>
-
-            {/* Privacy Link */}
-            <div className="mt-4 text-gray-500 text-sm">
-                <a href="" className="underline">Privacy</a> | © Team 313
-            </div>
+  return (
+    <div className="min-h-screen flex flex-col justify-between items-center px-6 py-10 text-center">
+        {/* Logo + Title */}
+        <div className="flex flex-col items-center space-y-6 mt-14">
+            <img src={logo} alt="Find a Friend Logo" className="w-50 h-50" />
+            <h1 className="text-5xl font-bold font-sans">find a friend</h1>
         </div>
-    );
+
+        {/* Description + Button */}
+        <div className="flex flex-col items-center w-full max-w-sm space-y-10">
+            <p className="text-[23px] font-['Averia_Serif_Libre'] leading-tight mb-6">
+            Connect with fellow LDS <br /> members and build <br /> meaningful friendships.
+            <br />
+            Your next adventure starts <br /> here!
+            </p>
+                <div className="mt-auto pb-6 px-2 w-full">
+                    <button
+                        onClick={handleLogin}
+                        className="w-full border border-gray-300 rounded-[16px] py-4 pl-16 pr-4 bg-white hover:shadow-md transition flex items-center justify-center relative font-sans overflow-hidden"
+                        >
+                        {/* Background image on the left, behind text */}
+                        <div className="absolute top-0 left-0 h-full z-0">
+                            <img
+                            src={`${process.env.PUBLIC_URL}/church.png`}
+                            alt="Church Logo"
+                            className="h-full w-full object-cover"
+                            />
+                        </div>
+
+                        {/* Centered Text (z-10 puts it above the image) */}
+                        <span className="text-lg z-10">
+                            Continue with Church Account
+                        </span>
+                    </button>
+                </div>
+            </div>
+        {/* Footer */}
+        <div className="text-gray-500 text-sm mt-12 flex items-center space-x-1">
+            <a href="#" className="underline">Privacy</a>
+            <span>| © Team 3</span>
+        </div>
+    </div>
+  );
 };
 
 export default Login;

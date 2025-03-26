@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const OnboardingConvert = () => {
   const navigate = useNavigate();
-  const [selection, setSelection] = useState(null); // Track selection state
+  const [selection, setSelection] = useState(null);
 
   const handleSelection = (choice) => {
     setSelection(choice);
@@ -11,51 +11,53 @@ const OnboardingConvert = () => {
 
   const handleContinue = () => {
     if (selection) {
-      navigate("/onboarding-calling"); // Navigate to Feed page only if a choice is made
+      navigate("/onboarding-calling-avail");
     }
   };
 
   return (
     <div className="flex flex-col h-screen justify-between px-6 py-10">
-      {/* Progress Indicator */}
-      <div className="flex justify-center space-x-2">
+      {/* Progress Bar */}
+      <div className="flex justify-center space-x-2 mb-16">
         <div className="w-8 h-2 bg-orange-400 rounded-full"></div>
         <div className="w-8 h-2 bg-orange-400 rounded-full"></div>
         <div className="w-8 h-2 bg-gray-300 rounded-full"></div>
         <div className="w-8 h-2 bg-gray-300 rounded-full"></div>
+        <div className="w-8 h-2 bg-gray-300 rounded-full"></div>
       </div>
 
-      {/* Question */}
-      <div className="text-center">
-        <h1 className="text-2xl font-bold">Are you a recent Convert?</h1>
+      {/* Question + Answers */}
+      <div className="flex flex-col text-left px-2 space-y-8">
+        <h1 className="leading-[1.2] text-[42px] font-bold font-['Averia_Serif_Libre']">
+          Are you a recent Convert?
+        </h1>
+
+        <div className="flex flex-col space-y-4 font-sans">
+          <button
+            onClick={() => handleSelection("Yes")}
+            className={`w-full border border-gray-300 rounded-[16px] py-4 text-lg ${
+              selection === "Yes" ? "bg-gray-200" : "bg-white"
+            }`}
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => handleSelection("No")}
+            className={`w-full border border-gray-300 rounded-[16px] py-4 text-lg ${
+              selection === "No" ? "bg-gray-200" : "bg-white"
+            }`}
+          >
+            No
+          </button>
+        </div>
       </div>
 
-      {/* Answer Options */}
-      <div className="flex flex-col space-y-4">
-        <button
-          onClick={() => handleSelection("Yes")}
-          className={`w-full border border-gray-300 rounded-lg py-3 text-lg ${
-            selection === "Yes" ? "bg-gray-200" : "bg-white"
-          }`}
-        >
-          Yes
-        </button>
-        <button
-          onClick={() => handleSelection("No")}
-          className={`w-full border border-gray-300 rounded-lg py-3 text-lg ${
-            selection === "No" ? "bg-gray-200" : "bg-white"
-          }`}
-        >
-          No
-        </button>
-      </div>
-
-      {/* Continue Button */}
-      <div className="pb-6">
+      {/* Continue Button at Bottom */}
+      <div className="mt-auto pb-6 font-sans p-2">
         <button
           onClick={handleContinue}
-          disabled={!selection} // Disable button if no selection is made
-          className={`w-full text-white text-lg font-semibold py-3 rounded-lg ${
+          disabled={!selection}
+          className={`w-full text-white text-lg font-semibold py-4 rounded-[16px] ${
             selection ? "bg-orange-400" : "bg-gray-300 cursor-not-allowed"
           }`}
         >

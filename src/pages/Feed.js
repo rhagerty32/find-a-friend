@@ -131,43 +131,30 @@ const Feed = () => {
   const [swipeDirection, setSwipeDirection] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
   const [showMatchPopup, setShowMatchPopup] = useState(false);
-  
-  // Touch swipe functionality
-  const cardRef = useRef(null);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [offsetX, setOffsetX] = useState(0);
   const [isSwiping, setIsSwiping] = useState(false);
+  const [tapStart, setTapStart] = useState({ x: 0, y: 0 });
+  const [tapEnd, setTapEnd] = useState({ x: 0, y: 0 });
 
+  const cardRef = useRef(null);
   const currentProfile = profiles[currentProfileIndex];
 
-  // Handle swipe actions
   const handleSwipe = (direction) => {
     setSwipeDirection(direction);
-    
-    // Show match popup for right swipes
     if (direction === 'right') {
       setShowMatchPopup(true);
-      setTimeout(() => {
-        setShowMatchPopup(false);
-      }, 1500);
+      setTimeout(() => setShowMatchPopup(false), 1500);
     }
-    
-    // After animation completes, move to next profile
     setTimeout(() => {
-      if (currentProfileIndex < profiles.length - 1) {
-        setCurrentProfileIndex(currentProfileIndex + 1);
-      } else {
-        // Loop back to the first profile for demo purposes
-        setCurrentProfileIndex(0);
-      }
+      setCurrentProfileIndex((currentProfileIndex + 1) % profiles.length);
       setCurrentImageIndex(0);
       setSwipeDirection(null);
       setOffsetX(0);
     }, 300);
   };
 
-  // Handle image navigation
   const nextImage = () => {
     if (currentImageIndex < currentProfile.images.length - 1) {
       setCurrentImageIndex(currentImageIndex + 1);
@@ -180,7 +167,6 @@ const Feed = () => {
     }
   };
 
-  // Touch handlers for swipe
   const handleTouchStart = (e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -188,138 +174,74 @@ const Feed = () => {
 
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
-    
-    // Calculate how far the user has swiped and update card position
     const diff = touchStart - e.targetTouches[0].clientX;
     setOffsetX(-diff);
     setIsSwiping(true);
-    
-    // Prevent default to stop scrolling
     e.preventDefault();
   };
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
-    // Calculate swipe distance
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-    
-    // Handle swipe based on direction and distance
-    if (isLeftSwipe) {
-      handleSwipe('left');
-    } else if (isRightSwipe) {
-      handleSwipe('right');
-    } else {
-      // Reset if not swiped far enough
-      setOffsetX(0);
-    }
-    
+    if (distance > 50) handleSwipe('left');
+    else if (distance < -50) handleSwipe('right');
+    else setOffsetX(0);
     setIsSwiping(false);
   };
 
-  // Calculate card animation style
   const getCardStyle = () => {
-    if (swipeDirection === 'right') {
-      return { transform: 'translateX(120%) rotate(12deg)', transition: 'transform 0.3s ease' };
-    }
-    if (swipeDirection === 'left') {
-      return { transform: 'translateX(-120%) rotate(-12deg)', transition: 'transform 0.3s ease' };
-    }
+    if (swipeDirection === 'right') return { transform: 'translateX(120%) rotate(12deg)', transition: 'transform 0.3s ease' };
+    if (swipeDirection === 'left') return { transform: 'translateX(-120%) rotate(-12deg)', transition: 'transform 0.3s ease' };
     if (isSwiping) {
-      // Calculate rotation based on offset - the further the swipe, the more rotation
       const rotate = offsetX * 0.1;
-      return { 
-        transform: `translateX(${offsetX}px) rotate(${rotate}deg)`, 
-        transition: 'none' 
-      };
+      return { transform: `translateX(${offsetX}px) rotate(${rotate}deg)`, transition: 'none' };
     }
     return { transform: 'translateX(0) rotate(0)', transition: 'transform 0.3s ease' };
   };
 
-  // Handle image tap for showing details vs. horizontal swipe
-  const [tapStart, setTapStart] = useState({ x: 0, y: 0 });
-  const [tapEnd, setTapEnd] = useState({ x: 0, y: 0 });
-  
   const handleImageTouchStart = (e) => {
-    setTapStart({
-      x: e.touches[0].clientX,
-      y: e.touches[0].clientY
-    });
+    setTapStart({ x: e.touches[0].clientX, y: e.touches[0].clientY });
   };
-  
+
   const handleImageTouchEnd = (e) => {
-    setTapEnd({
-      x: e.changedTouches[0].clientX,
-      y: e.changedTouches[0].clientY
-    });
-    
-    // Calculate distance moved
+    setTapEnd({ x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY });
     const distanceX = Math.abs(tapEnd.x - tapStart.x);
     const distanceY = Math.abs(tapEnd.y - tapStart.y);
-    
-    // If it's more of a tap than a swipe, toggle details
-    if (distanceX < 10 && distanceY < 10) {
-      setShowDetails(!showDetails);
-    } 
-    // If it's a horizontal swipe, change image
+    if (distanceX < 10 && distanceY < 10) setShowDetails(!showDetails);
     else if (distanceX > distanceY) {
-      if (tapEnd.x < tapStart.x) {
-        nextImage();
-      } else {
-        prevImage();
-      }
+      tapEnd.x < tapStart.x ? nextImage() : prevImage();
     }
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100">
-      {/* App Header - Keep as is */}
-      <header className="bg-[#F4874A] text-white p-4 flex justify-between items-center z-10">
-        <div className="flex items-center">
-          
-          <h1 className="text-xl font-bold"></h1>
-        </div>
-        <div className="flex space-x-2">
-          
-        </div>
-      </header>
+    <div className="flex flex-col pt-14">
+      {/* Static Header (doesn't move) */}
+      <div className="px-7 pt-6 pb-6">
+        <h1 className="text-[42px] leading-[1.2] font-bold font-['Averia_Serif_Libre']">
+          Discover
+        </h1>
+      </div>
 
-      {/* Main Content Area with proper spacing for nav bars */}
-      <div className="flex-1 flex items-center justify-center p-4 pb-20">
-        {/* Profile Card - fixed size instead of fullscreen */}
-        <div 
+      {/* Main Content Area */}
+      <div className={`flex-1 flex items-center justify-center px-5 ${showDetails ? 'pb-28' : 'pb-20'}`}>
+        <div
           ref={cardRef}
-          className="w-full max-w-md rounded-xl shadow-xl overflow-hidden"
+          className="w-full max-w-md rounded-[16px] shadow-xl overflow-hidden"
           style={getCardStyle()}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Profile Images */}
-          <div 
-            className="relative h-[calc(100vh-180px)] max-h-[600px] bg-gray-300 overflow-hidden"
+          <div
+            className="relative h-[calc(100vh-250px)] max-h-[600px] overflow-hidden"
             onTouchStart={handleImageTouchStart}
             onTouchEnd={handleImageTouchEnd}
           >
-            <img 
-              src={currentProfile.images[currentImageIndex]} 
+            <img
+              src={currentProfile.images[currentImageIndex]}
               alt={`${currentProfile.name}'s photo`}
               className="w-full h-full object-cover"
             />
-
-            {/* Image Pagination Dots */}
-            <div >
-              {currentProfile.images.map((_, index) => (
-                <div 
-                  key={index} 
-                  className={`h-1 w-16 rounded-full ${index === currentImageIndex ? 'bg-white' : 'bg-white bg-opacity-50'}`}
-                ></div>
-              ))}
-            </div>
-
-            {/* Profile Basic Info Overlay */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white">
               <h2 className="text-2xl font-bold">{currentProfile.name}, {currentProfile.age}</h2>
               <p className="opacity-90">{currentProfile.location}</p>
@@ -327,16 +249,14 @@ const Feed = () => {
             </div>
           </div>
 
-          {/* Extended Profile Details (toggled) */}
           {showDetails && (
             <div className="bg-white p-4">
               <h3 className="font-bold mb-2">About Me</h3>
               <p className="text-gray-700 mb-4">{currentProfile.bio}</p>
-              
               <h3 className="font-bold mb-2">Interests</h3>
               <div className="flex flex-wrap gap-2 mb-4">
                 {currentProfile.interests.map((interest, index) => (
-                  <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                  <span key={index} className="px-3 py-1 bg-orange-100 text-orange-400 rounded-full text-sm">
                     {interest}
                   </span>
                 ))}
@@ -355,7 +275,7 @@ const Feed = () => {
         </div>
       )}
 
-      {/* Add animation for fade-in-out */}
+      {/* Animation Style */}
       <style jsx="true">{`
         @keyframes fadeInOut {
           0% { opacity: 0; transform: scale(0.8); }
