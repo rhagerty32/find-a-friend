@@ -47,7 +47,7 @@ const OnboardingBirthday = () => {
                     />
                 </div>
 
-                <div className="flex items-center justify-between border border-gray-300 rounded-[16px] p-4 font-sans">
+                <div className="flex items-center justify-between border border-gray-300 rounded-[16px] text-[15px] p-4 font-sans">
                     <span>Show on profile</span>
                     <button
                         onClick={() => setShowOnProfile(!showOnProfile)}

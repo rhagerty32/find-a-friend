@@ -133,8 +133,8 @@ const OnboardingCallingAvailability = () => {
               onClick={() => handleDayClick(day)}
               className={`min-w-[64px] px-4 py-3 rounded-[16px] text-lg border transition ${
                 selectedDays.includes(day)
-                  ? "bg-orange-400 text-white"
-                  : "bg-gray-100 text-gray-700 border-gray-300"
+                  ? "bg-orange-400 border-orange-400 text-white"
+                  : "bg-white text-gray-700 border-gray-300"
               }`}
             >
               {day}

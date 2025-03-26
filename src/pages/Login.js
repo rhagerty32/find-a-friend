@@ -13,7 +13,7 @@ const Login = () => {
     <div className="min-h-screen flex flex-col justify-between items-center px-6 py-10 text-center">
         {/* Logo + Title */}
         <div className="flex flex-col items-center space-y-6 mt-14">
-            <img src={logo} alt="Find a Friend Logo" className="w-50 h-50" />
+            <img src={logo} alt="Find a Friend Logo" className="w-50 h-50 fill-orange-400" />
             <h1 className="text-5xl font-bold font-sans">find a friend</h1>
         </div>
 
@@ -27,7 +27,7 @@ const Login = () => {
                 <div className="mt-auto pb-6 px-2 w-full">
                     <button
                         onClick={handleLogin}
-                        className="w-full border border-gray-300 rounded-[16px] py-4 pl-16 pr-4 bg-white hover:shadow-md transition flex items-center justify-center relative font-sans overflow-hidden"
+                        className="w-full border border-gray-300 rounded-[16px] py-6 pl-16 pr-4 bg-white hover:shadow-md transition flex items-center justify-center relative overflow-hidden"
                         >
                         {/* Background image on the left, behind text */}
                         <div className="absolute top-0 left-0 h-full z-0">
@@ -39,7 +39,7 @@ const Login = () => {
                         </div>
 
                         {/* Centered Text (z-10 puts it above the image) */}
-                        <span className="text-lg z-10">
+                        <span className="pl-9 text-[15px] z-10">
                             Continue with Church Account
                         </span>
                     </button>
