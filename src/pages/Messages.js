@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LuSquarePen } from "react-icons/lu";
 
 const Messages = () => {
   const navigate = useNavigate();
-  // Sample conversations data
   const [conversations] = useState([
     {
       id: 1,
@@ -44,53 +44,53 @@ const Messages = () => {
   };
 
   return (
-    <div className="px-4 py-4 pb-24" style={{ maxWidth: '100vw' }}>
-      <h1 className="text-2xl font-bold mb-6 text-center text-[#F4874A]">Messages</h1>
-      
-      <div className="space-y-4 mt-4">
+    <div className="px-7 pt-20 pb-28">
+      {/* Title row with pencil icon */}
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-[42px] leading-[1.2] font-bold font-['Averia_Serif_Libre']">
+          Chat
+        </h1>
+        <button
+          onClick={() => alert('New message feature coming soon!')}
+          className="text-orange-400 p-2"
+        >
+          <LuSquarePen className="w-7 h-7" />
+        </button>
+      </div>
+
+      {/* Message list */}
+      <div className="space-y-6">
         {conversations.map((conversation) => (
           <div 
             key={conversation.id}
-            className="flex items-center p-3 rounded-lg shadow-md bg-white cursor-pointer"
+            className="flex items-center p-4 border border-gray-300 rounded-[16px] bg-white cursor-pointer"
             onClick={() => handleConversationClick(conversation.id)}
           >
-            <div className="relative">
+            <div className="relative mr-4">
               <img 
                 src={conversation.avatar} 
                 alt={conversation.name} 
-                className="w-12 h-12 rounded-full object-cover mr-3"
+                className="w-14 h-14 rounded-full object-cover"
               />
               {conversation.unread && (
-                <div className="absolute top-0 right-0 w-3 h-3 bg-[#F4874A] rounded-full"></div>
+                <div className="absolute top-0 right-0 w-3 h-3 bg-orange-400 rounded-full"></div>
               )}
             </div>
-            
+
             <div className="flex-1">
               <div className="flex justify-between items-center">
-                <h3 className="font-semibold">{conversation.name}</h3>
+                <h3 className="font-bold text-base">{conversation.name}</h3>
                 <span className="text-xs text-gray-500">{conversation.timestamp}</span>
               </div>
-              <p className={`text-sm ${conversation.unread ? 'font-medium text-black' : 'text-gray-600'}`}>
+              <p className={`text-sm mt-1 ${conversation.unread ? 'font-medium text-black' : 'text-gray-600'}`}>
                 {conversation.lastMessage}
               </p>
             </div>
           </div>
         ))}
       </div>
-
-      {/* New Message Button */}
-      <div className="fixed bottom-24 right-4">
-        <button 
-          className="bg-[#F4874A] text-white rounded-full p-3 shadow-lg"
-          onClick={() => alert('New message feature coming soon!')}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </button>
-      </div>
     </div>
   );
 };
 
-export default Messages; 
+export default Messages;
